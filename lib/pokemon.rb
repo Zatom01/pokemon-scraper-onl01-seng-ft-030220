@@ -12,8 +12,6 @@ class Pokemon
   
   
   def self.save(name,type,db)
-    sql="INSERT INTO pokemon (name,type) VALUES (?,?)"
-    DB[:conn].execute(sql,[name,type])
      sql = <<-SQL
       INSERT INTO pokemon (name, type)
       VALUES (?, ?)
