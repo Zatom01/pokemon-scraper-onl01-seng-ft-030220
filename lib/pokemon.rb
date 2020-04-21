@@ -20,14 +20,16 @@ class Pokemon
     
   end 
   
-  def self.find(id,db)
-    sql = <<-SQL 
-       SELECT * FROM pokemon WHERE pokemon.id =?
-    SQL 
+  def self.find(id, db)
+    sql = <<-SQL
+      SELECT * 
+      FROM pokemon
+      WHERE pokemon.id = ?;
+    SQL
     
-    row=db.execute(sql,id )[0]
-    pokemon_new=self.new(:id=> row[0], :name=>row[1], :type=>row[2], :db=>db)
-  end 
+    result = db.execute(sql, id)[0]
+    new_pokemon = self.new(id: result[0], name: result[1], type: result[2], db: db)
+  end
   
     
     
